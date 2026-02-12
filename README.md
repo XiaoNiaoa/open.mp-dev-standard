@@ -185,7 +185,7 @@ stock bool:House_GetTotalCost(houseid, &cost)
 
 ## 注释标准
 
-对于函数的说明注释使用 Doxygen 风格，直接关系到长期维护，至少包含 功能简述、参数、返回值、注意事项
+对于函数的说明注释使用 [Doxygen](https://github.com/doxygen/doxygen) 风格，直接关系到长期维护，至少包含 功能简述、参数、返回值、注意事项
 
 ```c
 /**
