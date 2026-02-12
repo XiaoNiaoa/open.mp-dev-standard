@@ -38,12 +38,12 @@
 
 ## 命名规范
 
-- 函数：PascalCase(所有单词首字母大写), 前缀是模块名 (如: Player_Load(playerid))。
-- 全局变量：小写 'g' 作为前缀 (如: gPlayerData[MAX_PLAYERS])。
-- 局部变量: 首单词小写, 后面单词首字母大写，或小写的缩写 (如: new number, vehicleIndex, id, pos)
-- 常量/宏：大写 SNAKE_CASE (如: #define MAX_VEHICLES 2000)。
-- 文件：全小写，分割使用 '-' (如: player-main.inc、player-impl.inc)；主文件 main.pwn。
-- 枚举与数据结构规范: 采用 E_MODULENAME_DATA 格式（如 E_PLAYER_DATA），全大写，采用 'E_' 开头
+- 函数：PascalCase(所有单词首字母大写), 前缀是模块名 (如: `Player_Load(playerid)`)。
+- 全局变量：小写 'g' 作为前缀 (如: `gPlayerData[MAX_PLAYERS]`)。
+- 局部变量: 首单词小写, 后面单词首字母大写，或小写的缩写 (如: `new number, vehicleIndex, id, pos`)
+- 常量/宏：大写 SNAKE_CASE (如: `#define MAX_VEHICLES 2000`)。
+- 文件：全小写，分割使用 '-' (如: `player-main.inc`、`player-impl.inc`)；主文件 `main.pwn`。
+- 枚举与数据结构规范: 采用 E_MODULENAME_DATA 格式（如 `E_PLAYER_DATA`），全大写，采用 'E_' 开头
 - 枚举成员采用: 模块名_字段名 全大写 SNAKE_CASE, 便于快速区分、选择、修改等等
 ```c
 // 房屋模块
