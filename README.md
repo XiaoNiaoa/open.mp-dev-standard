@@ -82,6 +82,12 @@ static gVehicleData[MAX_VEHICLES][E_VEHICLE_DATA];
 
 ## 包含守卫：
 
+打开任何一个 .inc 文件，第一眼能看到“这个文件要放在哪里、依赖谁”，不用翻 main.pwn 的 include 列表猜顺序或者人工记忆顺序，长期维护更加直观清晰
+
+尤其是相同层级的脚本，由于相互之间可能存在依赖关系，比如房屋模块需要使用到玩家模块的信息(金钱等等)，包含守卫可以很好地理清关系，避免脚本运行时出现问题，在编译阶段完美规避问题的出现
+
+注意注释保持简短，别写成大段文档
+
 ```c++
 // 防止重复包含 替换 SCRIPT_NAME 即可
 #if defined _INC_SCRIPT_NAME
@@ -89,24 +95,28 @@ static gVehicleData[MAX_VEHICLES][E_VEHICLE_DATA];
 #endif
 #define _INC_SCRIPT_NAME
 
+// 模块之间的依赖说明
+#if !defined _INC_OTHER_SCRIPT_NAME
+	#error 需要包含 other-script.inc.
+#endif
+
 // 环境约束 确保编译环境正确
 #if !defined _INC_open_mp
-	#error Could not find the latest version of the open.mp includes.
+	#error 需要包含 open.mp.inc.
 #endif
 
 // 依赖项的显式校验 快速定位缺失依赖
 #tryinclude <Pawn.RakNet>
 #if !defined PAWNRAKNET_INC_
-    #error Pawn.RakNet plugin is required
+    #error 需要使用 Pawn.RakNet 插件
 #endif
 
 // 插件版本与功能对齐
 #tryinclude <streamer>
-
 #if !defined Streamer_IncludeFileVersion
     #error cannot read from file: "streamer.inc"
 #elseif Streamer_IncludeFileVersion != 0x296
-    #error Your Streamer include is too old, please update to 2.9.6 or higher.
+    #error 不兼容的 streamer 插件版本, 请使用 2.9.6 版本.
 #endif
 
 // 零开销的默认配置 可在后续代码中随时关闭或开启调试
