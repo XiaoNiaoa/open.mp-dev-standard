@@ -224,8 +224,15 @@ SetSomething(1);
 SetSomething(SELECT_OBJECT_GLOBAL_OBJECT);
 ```
 ## 错误处理标准
+
 规范：返回值语义化
 
 逻辑判断返回类型 bool:
 
 成功返回 ID ( >= 0)，失败返回 INVALID_..._ID (-1)
+
+
+## 开源协议 (License)
+
+本项目遵循 [MIT License](LICENSE) 协议。
+你可以自由地使用、修改和分发本规范。
