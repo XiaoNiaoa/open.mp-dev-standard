@@ -163,17 +163,23 @@ stock bool:SCR_SetPlayerScore(playerid, score)
 - 定义：作用域全服务器, 命名采用 ModuleName_FunctionName 格式
 
 ```c
+#define HOUSE_TAX_RATE 0.1
+
 // 只有本模块能用，外部无法使用，也不会冲突
 static stock _House_CalculateTax(houseid) 
 {
-    return gHouseData[houseid][hPrice] * 0.1;
+    return floatround(float(gHouseData[houseid][HOUSE_PRICE]) * HOUSE_TAX_RATE);
 }
 
 // 对外接口
-stock House_GetTotalCost(houseid)
+stock bool:House_GetTotalCost(houseid, &cost)
 {
+	if(houseid < 0 || houseid >= MAX_HOUSES)
+		return false;
+
     // 内部逻辑调用私有函数
-    return gHouseData[houseid][hPrice] + _House_CalculateTax(houseid);
+    cost = gHouseData[houseid][HOUSE_PRICE] + _House_CalculateTax(houseid);
+	return true;
 }
 ```
 
