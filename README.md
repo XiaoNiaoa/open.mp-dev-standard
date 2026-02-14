@@ -39,7 +39,12 @@
 ## 命名规范
 
 - 函数：PascalCase(所有单词首字母大写), 前缀是模块名 (如: Player_Load(playerid))。
-- 全局变量：小写 'g' 作为前缀 (如: gPlayerData[MAX_PLAYERS])。
+- 全局变量：小写 'g_' 作为前缀 (如: g_PlayerData[MAX_PLAYERS])。
+```text
+g_ 代表全局变量
+gs_ 代表全局静态变量（作用域仅在当前模块内）
+gsc_ 表示全局静态常数变量
+```
 - 局部变量: 首单词小写, 后面单词首字母大写，或小写的缩写 (如: new number, vehicleIndex, id, pos)
 - 常量/宏：大写 SNAKE_CASE (如: #define MAX_VEHICLES 2000`)。
 - 文件：全小写，分割使用 '-' (如: player-main.inc、player-impl.inc)；主文件 main.pwn。
