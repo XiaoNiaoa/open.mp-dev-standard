@@ -220,29 +220,22 @@ stock Player_GetPropertyCount(playerid);
 
 用 enum + 宏定义标签，确保类型安全。
 
-示例：SELECT_OBJECT
+示例：WEATHER
 ```c
-#define SELECT_OBJECT: __TAG(SELECT_OBJECT):
-enum SELECT_OBJECT:__SELECT_OBJECT
+enum WEATHER:
 {
-    UNKNOWN_SELECT_OBJECT = -1,
-    SELECT_OBJECT_GLOBAL_OBJECT = 1,
-    SELECT_OBJECT_PLAYER_OBJECT
+    WEATHER_UNKNOWN = -1,
+    WEATHER_EXTRASUNNY_LA = 0,
+    WEATHER_SUNNY_LA,
+    WEATHER_EXTRASUNNY_SMOG_LA,
+    WEATHER_SUNNY_SMOG_LA,
+    WEATHER_CLOUDY_LA,
+    WEATHER_SUNNY_SF,
+	...,
+	...
 }
-static stock SELECT_OBJECT:_@SELECT_OBJECT() { return __SELECT_OBJECT; }
-
-#define UNKNOWN_SELECT_OBJECT (SELECT_OBJECT:-1)
-#define SELECT_OBJECT_GLOBAL_OBJECT (SELECT_OBJECT:1)
-#define SELECT_OBJECT_PLAYER_OBJECT (SELECT_OBJECT:2)
 ```
-如: 
-```c
-// 编译器会提示警告，因为它不是 SELECT_OBJECT 标签
-SetSomething(1); 
 
-// 编译器通过
-SetSomething(SELECT_OBJECT_GLOBAL_OBJECT);
-```
 ## 错误处理标准
 
 规范：返回值语义化
