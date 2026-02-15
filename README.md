@@ -39,11 +39,12 @@
 ## 命名规范
 
 - 函数：PascalCase(所有单词首字母大写), 前缀是模块名 (如: Player_Load(playerid))。
-- 全局变量：小写 'g_' 作为前缀 (如: g_PlayerData[MAX_PLAYERS])。
+- 全局变量：
 ```text
-g_ 代表全局变量
-gs_ 代表全局静态变量（作用域仅在当前模块内）
-gsc_ 表示全局静态常数变量
+前缀 g_ 代表全局变量 (gobal) 比如: new g_Var;
+前缀 gc_ 代表全局变量 (gobal const) 比如: new const gc_Var;
+前缀 gs_ 代表全局静态变量（作用域仅在当前模块内） (gobal static) 比如: static gs_Var;
+前缀 gsc_ 表示全局静态常数变量 (gobal static const) 比如: static const gsc_Var;
 ```
 - 局部变量: 首单词小写, 后面单词首字母大写，或小写的缩写 (如: new number, vehicleIndex, id, pos)
 - 常量/宏：大写 SNAKE_CASE (如: #define MAX_VEHICLES 2000`)。
