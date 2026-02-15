@@ -63,7 +63,7 @@ enum E_HOUSE_DATA
     bool:HOUSE_IS_LOCKED,
     HOUSE_PRICE
 }
-static gHouseData[MAX_HOUSES][E_HOUSE_DATA];
+static gs_HouseData[MAX_HOUSES][E_HOUSE_DATA];
 
 // 载具模块
 enum E_VEHICLE_DATA
@@ -73,7 +73,7 @@ enum E_VEHICLE_DATA
     Float:VEHICLE_HEALTH,
     VEHICLE_OWNER_ID
 }
-static gVehicleData[MAX_VEHICLES][E_VEHICLE_DATA];
+static gs_VehicleData[MAX_VEHICLES][E_VEHICLE_DATA];
 ```
 
 ## 缩写准则
@@ -194,7 +194,7 @@ stock bool:SCR_SetPlayerScore(playerid, score)
 // 只有本模块能用，外部无法使用，也不会冲突
 static stock _House_CalculateTax(houseid) 
 {
-    return floatround(float(gHouseData[houseid][HOUSE_PRICE]) * HOUSE_TAX_RATE);
+    return floatround(float(gs_HouseData[houseid][HOUSE_PRICE]) * HOUSE_TAX_RATE);
 }
 
 // 对外接口
@@ -204,7 +204,7 @@ stock bool:House_GetTotalCost(houseid, &cost)
 		return false;
 
     // 内部逻辑调用私有函数
-    cost = gHouseData[houseid][HOUSE_PRICE] + _House_CalculateTax(houseid);
+    cost = gs_HouseData[houseid][HOUSE_PRICE] + _House_CalculateTax(houseid);
 	return true;
 }
 ```
