@@ -129,6 +129,15 @@ static gs_VehicleData[MAX_VEHICLES][E_VEHICLE_DATA];
 #if !defined SCR_DEBUG
 	#define SCR_DEBUG false
 #endif
+
+// 或者这样
+#if SCR_DEBUG
+    #define DebugMessage(%1) printf("[Script Debug] " %1)
+    #define ErrorMessage(%1) printf("[Script Debug-Error] " %1)
+#else
+    #define DebugMessage(%1);
+    #define ErrorMessage(%1);
+#endif
 ```
 
 ## ALS 钩子标准
